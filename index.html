@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Quiz Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+
+
+        <!-- Profile Container -->
+        <!-- Profile Container -->
+        <div id="profile-container">
+            <h1 id="profile-title">Enter Your Name</h1>
+            <input type="text" id="profile-name-input" placeholder="Enter your name" />
+            <button id="save-name-button" class="button save-name-button">
+                <span class="button_lg">
+                    <span class="button_sl"></span>
+                    <span class="button_text">Save</span>
+                </span>
+            </button>
+            <p id="duplicate-message" class="hidden">
+                <span id="duplicate-message-text">This name already exists. Please choose a different name.</span>
+                <span id="duplicate-message-close" class="close-message">X</span>
+            </p>
+            <label for="name-dropdown" id="dropdown-label" class="hidden">
+                Select an existing profile from the dropdown below if you prefer to continue with a previously saved
+                profile:
+                <select id="name-dropdown" class="hidden">
+                    <option value="">Select your name</option>
+                </select>
+            </label>
+
+        </div>
+
+
+
+        <!-- Start Container -->
+        <div id="start-container" class="hidden">
+            <h1 id="welcome-message">Welcome to the JavaScript Quiz Game!</h1>
+            <label for="quiz-type">Select Quiz Type:</label>
+            <select id="quiz-type" class="custom-select">
+                <!-- Options will be populated by JavaScript -->
+            </select>
+            <button id="proceed" class="button proceed-button">
+                <span class="button_lg">
+                    <span class="button_sl"></span>
+                    <span class="button_text">Proceed</span>
+                </span>
+            </button>
+            <button id="show-about-me" class="button show-about-me-button">
+                <span class="button_lg">
+                    <span class="button_sl"></span>
+                    <span class="button_text">About Me</span>
+                </span>
+            </button>
+            <button id="show-purpose" class="button show-purpose-button">
+                <span class="button_lg">
+                    <span class="button_sl"></span>
+                    <span class="button_text">Purpose</span>
+                </span>
+            </button>
+            <button id="showPreviousRecordsBtn" class="btn-shine">Show Previous Records</button>
+            
+
+        </div>
+
+
+        <!-- Button to open the Previous Records Modal -->
+
+
+
+
+
+
+        <!-- Instruction Container -->
+        <div id="instruction-container" class="hidden">
+            <div id="basic-instructions" class="instructions-container hidden">
+                <h2 class="instructions-title">Basic Quiz Instructions</h2>
+
+                <h3 class="toggle-section" data-target="#total-questions-basic">Total Questions</h3>
+                <div id="total-questions-basic" class="section-content">
+                    <p>The Basic Quiz consists of <span id="total-basic-questions">[TotalCount]</span> questions. For
+                        each quiz session, 10 questions are randomly selected and shuffled from the full set to ensure a
+                        varied experience.</p>
+                </div>
+
+                <h3 class="toggle-section" data-target="#points-basic">Points System</h3>
+                <div id="points-basic" class="section-content">
+                    <ul class="points-list">
+                        <li><span class="points-amount">10</span> points for answering with 6 or more seconds remaining
+                        </li>
+                        <li><span class="points-amount">9</span> points for answering with 5 seconds remaining</li>
+                        <li><span class="points-amount">8</span> points for answering with 4 seconds remaining</li>
+                        <li><span class="points-amount">7</span> points for answering with 3 seconds remaining</li>
+                        <li><span class="points-amount">6</span> points for answering with 2 seconds remaining</li>
+                        <li><span class="points-amount">5</span> points for answering with 1 second remaining</li>
+                        <li><span class="points-amount">4</span> points for answering with 0 seconds remaining</li>
+                        <li><span class="points-amount">0</span> points for not attempting</li>
+                    </ul>
+                </div>
+
+
+
+                <h3 class="toggle-section" data-target="#time-per-question-basic">Time per Question</h3>
+                <div id="time-per-question-basic" class="section-content">
+                    <p>You have 10 seconds to answer each question. If you do not answer within the time limit, the
+                        question will be skipped and no points will be awarded.</p>
+                </div>
+
+                <h3 class="toggle-section" data-target="#bonus-time-basic">Bonus Time</h3>
+                <div id="bonus-time-basic" class="section-content">
+                    <p>Quicker responses will help you earn more points. Try to answer as soon as possible to get the
+                        highest score!</p>
+                    <p>In addition, bonus time is awarded based on how quickly you answer each question. The faster your
+                        response, the more bonus points you receive, which can significantly boost your overall score.
+                    </p>
+                    <p>Your total score is calculated based on the accuracy of your answers and the total time taken.
+                        Efficient answering contributes to a lower total time, which in turn improves your accuracy and
+                        overall score. Aim to strike a balance between speed and accuracy to achieve the best results!
+                    </p>
+                </div>
+
+                <h3 class="toggle-section" data-target="#what-to-expect-basic">What to Expect After the Quiz</h3>
+                <div id="what-to-expect-basic" class="section-content">
+                    <p>After completing the quiz, you will see a comprehensive summary of your performance, including:
+                    </p>
+                    <ul>
+                        <li><strong>Total Score:</strong> Your overall score out of 100, reflecting your performance in
+                            the quiz.</li>
+                        <li><strong>Accuracy:</strong> The percentage of correct answers out of the total questions
+                            attempted, giving you an idea of your accuracy.</li>
+                        <li><strong>Total Time Taken:</strong> The total time you spent answering the questions,
+                            measured in seconds.</li>
+                        <li><strong>Remark:</strong> A performance remark based on your score, accuracy, and time taken.
+                            The remarks can range from 'Needs Improvement' to 'Excellent' depending on your results.
+                        </li>
+                    </ul>
+                    <p>You will also be able to review each question and see which ones you answered correctly or
+                        incorrectly. For each question, you'll find:</p>
+                    <ul>
+                        <li><strong>Correct and Incorrect Answers:</strong> Highlighted options indicating your selected
+                            answer and the correct answer.</li>
+                        <li><strong>Time Taken:</strong> The amount of time you spent on each question.</li>
+                        <li><strong>Points Awarded:</strong> Points given for each question based on your response and
+                            timing.</li>
+                        <li><strong>Introduction:</strong> Any additional explanation or context provided for the
+                            question to help you understand the topic better.</li>
+                    </ul>
+                    <p>If your new result is the best compared to your previous records, you'll see a special note
+                        indicating "New Record!" to celebrate your achievement.</p>
+                    <p>Additionally, you can view all your previous quiz records, including the current quiz result, by
+                        clicking the "Show Previous Records" button. This will display a table of all your past results,
+                        allowing you to compare your performance over time and see how you have progressed. The table
+                        includes details such as total score, accuracy, time taken, and remarks for each quiz.</p>
+                </div>
+
+            </div>
+
+            <div id="advanced-instructions" class="instructions-container hidden">
+                <h2 class="instructions-title">Advanced Quiz Instructions</h2>
+
+                <h3 class="toggle-section" data-target="#total-questions-advanced">Total Questions</h3>
+                <div id="total-questions-advanced" class="section-content">
+                    <p>The Advanced Quiz consists of <span id="total-advanced-questions">[TotalCount]</span> questions.
+                        For each quiz session, 10 questions are randomly selected and shuffled from the full set to
+                        ensure a varied experience.</p>
+                </div>
+
+
+                <h3 class="toggle-section" data-target="#points-advanced">Points System</h3>
+                <div id="points-advanced" class="section-content">
+                    <ul class="points-list">
+                        <li><span class="points-amount">10</span> points for answering with 11 or more seconds remaining
+                        </li>
+                        <li><span class="points-amount">9.5</span> points for answering with 10 seconds remaining</li>
+                        <li><span class="points-amount">9</span> points for answering with 9 seconds remaining</li>
+                        <li><span class="points-amount">8.5</span> points for answering with 8 seconds remaining</li>
+                        <li><span class="points-amount">8</span> points for answering with 7 seconds remaining</li>
+                        <li><span class="points-amount">7.5</span> points for answering with 6 seconds remaining</li>
+                        <li><span class="points-amount">7</span> points for answering with 5 seconds remaining</li>
+                        <li><span class="points-amount">6.5</span> points for answering with 4 seconds remaining</li>
+                        <li><span class="points-amount">6</span> points for answering with 3 seconds remaining</li>
+                        <li><span class="points-amount">5.5</span> points for answering with 2 seconds remaining</li>
+                        <li><span class="points-amount">5</span> points for answering with 1 second remaining</li>
+                        <li><span class="points-amount">4.5</span> points for answering with 0 seconds remaining</li>
+                        <li><span class="points-amount">0</span> points for not attempting</li>
+                    </ul>
+                </div>
+
+
+                <h3 class="toggle-section" data-target="#time-per-question-advanced">Time per Question</h3>
+                <div id="time-per-question-advanced" class="section-content">
+                    <p>You have 20 seconds to answer each question. If you do not answer within the time limit, the
+                        question will be skipped and no points will be awarded.</p>
+                </div>
+
+                <h3 class="toggle-section" data-target="#bonus-time-advanced">Bonus Time</h3>
+                <div id="bonus-time-advanced" class="section-content">
+                    <p>Quicker responses will help you earn more points. Try to answer as soon as possible to get the
+                        highest score!</p>
+                    <p>In addition, bonus time is awarded based on how quickly you answer each question. The faster your
+                        response, the more bonus points you receive, which can significantly boost your overall score.
+                    </p>
+                    <p>Your total score is calculated based on the accuracy of your answers and the total time taken.
+                        Efficient answering contributes to a lower total time, which in turn improves your accuracy and
+                        overall score. Aim to strike a balance between speed and accuracy to achieve the best results!
+                    </p>
+                </div>
+
+                <h3 class="toggle-section" data-target="#what-to-expect-advanced">What to Expect After the Quiz</h3>
+                <div id="what-to-expect-advanced" class="section-content">
+                     <p>After completing the quiz, you will see a comprehensive summary of your performance, including:
+                        </p>
+                        <ul>
+                            <li><strong>Total Score:</strong> Your overall score out of 100, reflecting your performance
+                                in the quiz.</li>
+                            <li><strong>Accuracy:</strong> The percentage of correct answers out of the total questions
+                                attempted, giving you an idea of your accuracy.</li>
+                            <li><strong>Total Time Taken:</strong> The total time you spent answering the questions,
+                                measured in seconds.</li>
+                            <li><strong>Remark:</strong> A performance remark based on your score, accuracy, and time
+                                taken. The remarks can range from 'Needs Improvement' to 'Excellent' depending on your
+                                results.</li>
+                        </ul>
+                        <p>You will also be able to review each question and see which ones you answered correctly or
+                            incorrectly. For each question, you'll find:</p>
+                        <ul>
+                            <li><strong>Correct and Incorrect Answers:</strong> Highlighted options indicating your
+                                selected answer and the correct answer.</li>
+                            <li><strong>Time Taken:</strong> The amount of time you spent on each question.</li>
+                            <li><strong>Points Awarded:</strong> Points given for each question based on your response
+                                and timing.</li>
+                            <li><strong>Introduction:</strong> Any additional explanation or context provided for the
+                                question to help you understand the topic better.</li>
+                        </ul>
+                        <p>If your new result is the best compared to your previous records, you'll see a special note
+                            indicating "New Record!" to celebrate your achievement.</p>
+                        <p>Additionally, you can view all your previous quiz records, including the current quiz result,
+                            by clicking the "Show Previous Records" button. This will display a table of all your past
+                            results, allowing you to compare your performance over time and see how you have progressed.
+                            The table includes details such as total score, accuracy, time taken, and remarks for each
+                            quiz.</p>
+                </div>
+            </div>
+
+            <button id="start" class="button start-button">
+                <span class="button_lg">
+                    <span class="button_sl"></span>
+                    <span class="button_text">Start Quiz</span>
+                </span>
+            </button>
+        </div>
+
+        <!-- Quiz Container -->
+        <div id="quiz-container" class="hidden">
+            <h1>JavaScript Quiz</h1>
+            <div id="quiz"></div>
+            <div id="feedback" class="hidden">
+                <p id="feedbackMessage"></p>
+            </div>
+            <div id="timerContainer">
+                <div id="timer">
+                    Time Left: <span id="time">10</span> seconds
+                </div>
+                <div id="warning-message" class="hidden">Please select an answer before proceeding to the next question.
+                </div>
+                <div id="timeUp" class="hidden">Time's up for this question!</div>
+            </div>
+            <div id="progress"></div>
+
+            <div class="button-wrapper">
+                <button id="pauseQuiz" class="button pause-button">
+                    <span class="button_lg">
+                        <span class="button_sl"></span>
+                        <span class="button_text">Pause Quiz</span>
+                    </span>
+                </button>
+                <button id="reset" class="button reset-button hidden">
+                    <span class="button_lg">
+                        <span class="button_sl"></span>
+                        <span class="button_text">Reset Quiz</span>
+                    </span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Pause Overlay -->
+        <div id="pauseOverlay" class="hidden">
+            <div id="pauseContent">
+                <p>The quiz is paused.</p>
+                <button id="resumeQuiz" class="button resume-button">
+                    <span class="button_lg">
+                        <span class="button_sl"></span>
+                        <span class="button_text">Resume Quiz</span>
+                    </span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Quiz Results Modal -->
+        <div id="resultsModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title">Quiz Results</h2>
+                </div>
+                <div class="modal-body" id="resultsModalBody">
+                    <!-- Results will be displayed here -->
+                </div>
+                <div class="modal-footer">
+                    <button id="showPreviousRecordsBtnInResultsModal"class="btn-shine">Show Previous Records</button>
+                    <button id="closeResultsModalBtn">Close</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Previous Records Modal -->
+        <div id="previousRecordsModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title">Previous Quiz Records</h2>
+                </div>
+                <div class="modal-body">
+                    <!-- Filter Options -->
+                    <div class="filter-container">
+                        <label for="filterSelect">Sort by:</label>
+                        <select id="filterSelect">
+                            <option value="" selected>Select All</option> <!-- Default state -->
+                            <option value="dateDesc">Date (Newest first)</option>
+                            <option value="dateAsc">Date (Oldest first)</option>
+                            <option value="scoreDesc">Score (Highest first)</option>
+                            <option value="scoreAsc">Score (Lowest first)</option>
+                            <option value="accuracyDesc">Accuracy (Highest first)</option>
+                            <option value="accuracyAsc">Accuracy (Lowest first)</option>
+                            <option value="questionsAttemptedDesc">Questions Attempted (Most first)</option>
+                            <option value="questionsAttemptedAsc">Questions Attempted (Fewest first)</option>
+                            <option value="wrongQuestionsDesc">Wrong Questions (Most first)</option>
+                            <option value="wrongQuestionsAsc">Wrong Questions (Fewest first)</option>
+                            <option value="missedQuestionsDesc">Missed Questions (Most first)</option>
+                            <option value="missedQuestionsAsc">Missed Questions (Fewest first)</option>
+                            <option value="timeTakenDesc">Time Taken (Longest first)</option>
+                            <option value="timeTakenAsc">Time Taken (Shortest first)</option>
+                            <option value="remarkDesc">Remark (Good to Bad)</option>
+                            <option value="remarkAsc">Remark (Bad to Good)</option>
+                        </select>
+                    </div>
+                       <!-- Add this to your modal body section -->
+                       <div id="noRecordsMessage" style="display: none; text-align: center; padding: 20px;">
+                        <p>No previous records available for this user.</p>
+                    </div>
+                    <table id="recordsTable">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Quiz Type</th>
+                                <th>Questions Attempted</th>
+                                <th>Wrong Questions</th>
+                                <th>Missed Questions</th>
+                                <th>Correct Questions</th>
+                                <th>Accuracy</th>
+                                <th>Total Score</th>
+                                <th>Total Time</th>
+                                <th>Remark</th> <!-- New header for remarks -->
+                                <th>Timestamp</th>
+
+                            </tr>
+                        </thead>
+                        <tbody id="recordsTableBody">
+                            <!-- Records will be displayed here -->
+                        </tbody>
+                    </table>
+
+                </div>
+                <div class="modal-footer">
+                    <button id="closePreviousRecordsModalBtn">Close</button>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- About Me Container -->
+        <div id="about-me-container" class="info-container hidden">
+            <div class="info-content">
+                <button class="close-button" id="close-about-me">X</button>
+                <h2 class="about-me-title">About Me</h2>
+                <div class="about-me-details">
+                    <p class="detail-item"><strong class="detail-label">Name:</strong> Abdur Rahman</p>
+                    <p class="detail-item"><strong class="detail-label">Current Qualification:</strong> BSc in Software
+                        Engineering</p>
+                    <p class="detail-item"><strong class="detail-label">Current Position:</strong> Intern</p>
+                    <p class="detail-item"><strong class="detail-label">Skills:</strong> Web Development, Coding</p>
+                    <p class="detail-item"><strong class="detail-label">Interests:</strong> Technology</p>
+                    <p class="detail-item">Email: <a href="mailto:abdurehmankhan760@gmail.com"
+                            class="contact-link">abdurehmankhan760@gmail.com</a></p>
+                    <p class="detail-item">Phone: <a href="tel:+923029437934" class="contact-link">+923029437934</a></p>
+                    <p class="detail-item">Portfolio: <a href="https://your-portfolio-link.com" class="contact-link"
+                            target="_blank">Portfolio</a></p>
+                    <p class="detail-item">GitHub: <a href="https://github.com/abdurehman760" class="contact-link"
+                            target="_blank">GitHub Profile</a></p>
+
+                    <p class="brief-description">I am a motivated and enthusiastic intern with a strong foundation in
+                        Software Engineering. I have a passion for web development and coding, with hands-on experience
+                        in building dynamic and responsive web applications.</p>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Purpose Container -->
+        <div id="purpose-container" class="info-container hidden">
+            <div class="info-content">
+                <button class="close-button" id="close-purpose">X</button>
+                <h2 class="purpose-title">Project Purpose and Description</h2>
+                <p class="purpose-item"><strong class="purpose-label">Project Purpose:</strong></p>
+                <p class="purpose-description">This project aims to develop a comprehensive and interactive quiz
+                    application designed to enhance users' knowledge and provide a fun learning experience.
+                    By incorporating features such as timers, question shuffling, and score tracking, the application
+                    seeks to create an engaging environment for both basic and advanced quizzes.
+                    <d class="source-link">
+                        <strong class="source-label">Source Code:</strong> You can find the source code for this project
+                        on
+                        <a href="https://github.com/your-repo-url" target="_blank" class="github-link">GitHub</a> or
+                        <a href="https://replit.com/@abdurehmankhan7/HTML-CSS-JS-1?s=app" target="_blank"
+                            class="replit-link">Replit</a>.
+                    </d>
+                </p>
+                <p class="purpose-item"><strong class="purpose-label">Project Description:</strong></p>
+                <ul class="purpose-features">
+                    <li class="feature-item"><strong class="feature-label">Dynamic Quiz Selection:</strong> Users can
+                        choose between basic and advanced quizzes, each with different difficulty levels and question
+                        types.</li>
+                    <li class="feature-item"><strong class="feature-label">Interactive Quiz Interface:</strong>
+                        Questions are presented with multiple-choice options, and users can select their answers using
+                        radio buttons.</li>
+                    <li class="feature-item"><strong class="feature-label">Real-Time Feedback:</strong> Instant feedback
+                        is provided after each answer, highlighting correct and incorrect choices and awarding points
+                        based on the time taken to answer.</li>
+                    <li class="feature-item"><strong class="feature-label">Timer Functionality:</strong> The application
+                        includes a timer for each question and an overall timer for the quiz, with options to pause and
+                        resume the quiz.</li>
+                    <li class="feature-item"><strong class="feature-label">Results and Analytics:</strong> At the end of
+                        the quiz, users receive detailed results, including accuracy, score, time taken, and a breakdown
+                        of answers.</li>
+                    <li class="feature-item"><strong class="feature-label">Responsive Design:</strong> The application
+                        is designed to be user-friendly and accessible across different devices and screen sizes.</li>
+                </ul>
+
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- Overlay Background -->
+    <div id="overlay" class="overlay"></div>
+
+    </div>
+
+    <script src="profile.js"></script>
+    <script src="basicQuestionsData.js"></script>
+    <script src="advanceQuestionsData.js"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>

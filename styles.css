@@ -1,0 +1,1640 @@
+/* Font Import */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Open+Sans:wght@400;600&display=swap');
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern and clean font */
+  background-color: #f7f7f7;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.container {
+  width: 80%;
+  max-width: 600px;
+  background-color: #f9f9f9; /* Light background color */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  text-align: center;
+  margin: 0 auto; /* Center horizontally */
+}
+
+.container h1 {
+  color: #6a0dad; /* Light purple color */
+  font-size: 24px;
+  margin-bottom: 15px; /* Space below the heading */
+}
+
+
+
+.hidden {
+  display: none;
+}
+h1 {
+    font-size: 1.1rem;
+    text-align: center;
+    padding: 3px;
+}
+
+#quiz {
+  margin-bottom: 20px;
+}
+
+.question {
+  width: 95%;
+  height: 6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #333;
+  border-radius: 15px;
+  margin: 13px 0;
+  background-color: #2e2e2e;
+  color: #e5e5e5;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  font-family: 'Courier New', Courier, monospace;
+}
+
+/* Hide the native radio button */
+input[type="radio"] {
+  opacity: 0;
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+/* Base style for labels */
+label {
+  display: block;
+  padding: 12px 18px;
+  background-color: #dddddd47; /* Light-colored background */
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden; /* Ensure pseudo-elements are contained */
+  transition: background-color 0.3s, box-shadow 0.3s; /* Smooth transitions */  
+}
+
+/* Hover effect */
+label:hover {
+  background-color: #e0e0e0; /* Slightly darker background on hover */
+  transform: scaleY(0.98);
+}
+
+/* Feedback for selected labels */
+label.correct {
+  background-color: #d0f0c0; /* Green background for correct answers */
+  border-color: #a0d0a0; /* Green border for correct answers */
+  color: #2d6a4f; /* Darker green text for better readability */
+}
+
+label.incorrect {
+  background-color: #f8d7da; /* Red background for incorrect answers */
+  border-color: #f5c6cb; /* Light red border for incorrect answers */
+  color: #721c24; /* Darker red text for better readability */
+}
+
+label.neutral {
+  background-color: #f0f0f0; /* Default background for unselected options */
+  border-color: #ddd; /* Default border for unselected options */
+}
+
+/* Style for feedback element */
+#feedbackElement {
+  display: none;
+  padding: 10px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+#feedbackElement.correct {
+  background-color: #d0f0c0; /* Green background for correct feedback */
+  color: #2d6a4f; /* Darker green text for better readability */
+}
+
+#feedbackElement.incorrect {
+  background-color: #f8d7da; /* Red background for incorrect feedback */
+  color: #721c24; /* Darker red text for better readability */
+}
+
+#feedbackElement.missed {
+  background-color: #f0f0f0; /* Light grey background for missed questions */
+  color: #6c757d; /* Grey text for missed questions */
+}
+
+/* Click feedback with border pulse effect */
+input[type="radio"]:checked + .custom-radio {
+  animation: clickBorderPulse 0.6s ease-out; /* Border pulse animation */
+}
+
+/* Border pulse animation */
+@keyframes clickBorderPulse {
+  0% {
+      border-color: #4caf50; /* Starting border color */
+      transform: scale(1);
+  }
+  50% {
+      border-color: #81c784; /* Intermediate border color */
+      transform: scale(1); /* No scale change */
+  }
+  100% {
+      border-color: #4caf50; /* Ending border color */
+      transform: scale(1);
+  }
+}
+
+/* Optional: custom radio styling */
+.custom-radio {
+  display: none; /* Hide default radio circle */
+}
+
+
+/* Basic styles for the quiz */
+label.option-label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+/* Ensure the label text starts with the option letter */
+label.option-label .option-text {
+  margin-left: 10px; /* Adjust as needed */
+}
+
+
+
+/* Style for checked state of custom radio button */
+input[type="radio"]:checked + .custom-radio {
+  background-color: #000; /* Background color when checked */
+}
+
+/* Wrapper for buttons */
+.button-wrapper {
+  display: flex;
+  justify-content: center; /* Center align the buttons horizontally */
+  gap: 10px; /* Space between buttons */
+  margin: 20px 0; /* Space above and below the button group */
+}
+
+
+
+#timerContainer {
+  margin-top: 10px;
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ccc;
+  padding: 5px;
+}
+
+#timer {
+  font-size: 18px;
+  color: #333;
+}
+
+#time {
+  font-size: 28px; /* Increase font size for emphasis */
+  color: #15ff00;
+  font-family: Arial, sans-serif; /* Ensure consistent font */
+  transition: color 0.3s ease; /* Smooth transition for color change */
+}
+
+#time.less-than-5 {
+  color: red;
+  font-weight: bold; /* Make it bold for emphasis */
+  font-size: 28px; /* Larger font size when time is critical */
+}
+
+#timeUp {
+  color: red;
+  font-weight: bold;
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+
+.hidden {
+  display: none;
+}
+#results {
+  font-size: 18px;
+  color: #333;
+}
+
+#progress {
+  margin: 20px 0;
+}
+
+.correct {
+  color: green;
+  font-weight: bold;
+}
+.incorrect {
+  color: red;
+  font-weight: bold;
+}
+
+/* Modal Container */
+/* Modal Container */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* Darker semi-transparent background */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #ffffff; /* White background for modal content */
+  margin: 2% auto;
+  padding: 20px; /* Increased padding for a more spacious feel */
+  border-radius: 12px; /* Slightly larger border radius for rounded corners */
+  width: 80%;
+  max-width: 700px; /* Slightly smaller max-width */
+  max-height: 85%; /* Reduced max-height to fit better in viewport */
+  overflow: hidden;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* More pronounced shadow */
+  animation: fadeIn 0.3s ease-out;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Modal Header */
+.modal-header {
+  background-color: #9c4fe56b; /* Bold background color for header */
+  color: #ffffff; /* White text color for contrast */
+  border-bottom: none; /* Remove border for a cleaner look */
+  padding: 15px;
+  position: sticky;
+  top: 0;
+  z-index: 1; /* Ensure header is above other content */
+  border-top-left-radius: 12px; /* Rounded corners on the top-left */
+  border-top-right-radius: 12px; /* Rounded corners on the top-right */
+}
+
+.modal-title {
+  font-size: 24px;
+  font-weight: 600; /* Slightly bolder text */
+  margin: 0; /* Remove default margin */
+}
+
+/* Modal Body */
+.modal-body {
+  flex: 1; /* Take remaining space */
+  overflow-y: auto; /* Vertical scroll if content exceeds height */
+  padding: 20px;
+  font-size: 16px;
+  color: #333; /* Darker text color for readability */
+}
+
+/* Modal Footer */
+.modal-footer {
+  border-top: 1px solid #ddd;
+  padding: 15px;
+  text-align: right;
+  background-color: #f1f1f1; /* Light gray background for footer */
+  border-bottom-left-radius: 12px; /* Rounded corners on the bottom-left */
+  border-bottom-right-radius: 12px; /* Rounded corners on the bottom-right */
+}
+
+
+/* Animation */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Filter Container */
+/* Filter Container */
+.filter-container {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#filterSelect {
+  padding: 5px 10px;
+  font-size: 16px;
+  border: 3px solid #bd08ff9a;
+  border-radius: 5px;
+  background: #fff;
+  background-size: 12px 12px;
+}
+#filterSelect:hover {
+  transform: scale(1.03);
+}
+
+#filterSelect option {
+  padding: 5px;
+}
+/* Highlight the table header for the sorted column */
+/* Highlight the table header and cells for the sorted column */
+/* Highlighted column */
+.highlight {
+  background-color: #e0f7fa; /* Light cyan background for highlighted column */
+
+  color: #00796b; /* Darker text color for contrast */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+}
+
+/* Animated highlighting for cells */
+@keyframes highlightAnimation {
+  from {
+    background-color: #e0f7fa;
+    color: #00796b;
+  }
+  to {
+    background-color: #b2ebf2; /* Slightly darker cyan for a subtle effect */
+    color: #004d40; /* Darker text color for emphasis */
+  }
+}
+
+/* Apply animation to highlighted cells */
+.highlight-cell {
+  animation: highlightAnimation 0.5s ease;
+}
+/* Define the styling for remark cells */
+.remark-cell {
+    padding: 5px;
+    color: #333;
+    text-align: center !important;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.remark-excellent {
+    background-color: #d4edda; /* Light green */
+}
+
+.remark-great-job {
+    background-color: #94d1ed; /* blue */
+}
+
+.remark-good {
+    background-color: #ffeeba; /* Yellow */
+}
+
+.remark-average {
+    background-color: #f3bb1590; /* Amber */
+}
+
+.remark-needs-improvement {
+    background-color: #f8d7da; /* Light red */
+}
+
+
+/* Previous Records Modal Styles */
+#previousRecordsModal .modal-content {
+  max-width: 1300px;
+  min-width: 600px;
+  margin: 50px auto;
+  min-height: 85%;
+}
+
+/* Responsive Table */
+/* General Table Styles */
+#recordsTable {
+  width: 100%;
+  border-collapse: collapse;
+  overflow-x: auto; /* Enable horizontal scrolling */
+  box-shadow: 0px 0px 10px 3px #cd52c55e;
+}
+
+/* Responsive Design Adjustments */
+@media (max-width: 1024px) { /* For tablets */
+  .modal-body {
+    padding: 10px; /* Adjust padding for smaller screens */
+    overflow-x: auto; /* Ensure content can scroll horizontally */
+  }
+
+  #recordsTable {
+    font-size: 14px; /* Smaller font size for better fit */
+    display: block; /* Ensure table can scroll horizontally */
+  }
+
+  #recordsTable th, #recordsTable td {
+    padding: 8px; /* Reduce padding for smaller screens */
+  }
+
+  /* Optionally, adjust modal content width for better fit */
+  .modal-content {
+    width: 90%; /* Adjust width for tablets */
+  }
+}
+
+@media (max-width: 768px) { /* For smaller screens like mobile phones */
+  .modal-body {
+    padding: 5px; /* Further adjust padding for smaller screens */
+  }
+
+  #recordsTable {
+    font-size: 12px; /* Even smaller font size for mobile */
+  }
+
+  #recordsTable th, #recordsTable td {
+    padding: 6px; /* Further reduce padding */
+  }
+}
+
+#recordsTable th, #recordsTable td {
+  border: 1px solid #ddd;
+  padding: 5px;
+  text-align: left;
+}
+
+#recordsTable th {
+  background-color: #f2f2f2;
+}
+/* CSS for the enhanced animation */
+@keyframes sortFeedback {
+  0% {
+      transform: scale(1);
+      opacity: 1;
+      background-color: transparent;
+  }
+  30% {
+      transform: scale(1.1);
+      opacity: 0.8;
+      background-color: #bd75d241; /* Light green background for feedback */
+  }
+  60% {
+      transform: scale(0.98);
+      opacity: 1;
+      background-color: #e6f7ff; /* Light blue background for feedback */
+  }
+  100% {
+      transform: scale(1);
+      opacity: 1;
+      background-color: transparent;
+  }
+}
+
+.sort-feedback {
+  animation: sortFeedback 0.8s ease-out;
+}
+
+
+/* ------------------------- */
+/* Summary Section */
+.result-summary {
+  margin-bottom: 20px;
+}
+
+.summary-title {
+  font-size: 1.4em;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.summary-item {
+  margin-bottom: 10px;
+  font-size: 1.1em;
+}
+
+.summary-divider {
+  border: none;
+  border-top: 2px solid #007BFF;
+  margin: 20px 0;
+}
+
+/* Detailed results */
+
+/* Result Question */
+.result-question {
+  cursor: pointer;
+  font-weight: bold;
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.result-question:hover {
+  background-color: #e9ecef;
+}
+
+/* Detailed Results */
+/* Result Details */
+.result-details {
+  padding: 10px;
+  border-left: 4px solid #007BFF; /* Blue border to highlight details */
+  border-radius: 4px;
+  background-color: #f1f5f9; /* Light background for details */
+  margin-top: 10px;
+  display: none; /* Hidden by default */
+  transition: max-height 0.3s ease-out; /* Smooth transition for expanding/collapsing */
+}
+
+
+.result-details.expanded {
+  display: block; /* Show when expanded */
+}
+
+
+.result-answers {
+  margin-bottom: 10px;
+}
+
+.result-option {
+  padding: 10px;
+  border-radius: 5px;
+  margin: 5px 0;
+  font-size: 1em;
+}
+
+.result-option.correct {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.result-option.incorrect {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.option-divider {
+  border: none;
+  border-top: 1px dashed #ccc;
+  margin: 5px 0;
+}
+
+/* Styling for missed answers */
+.missed-answer {
+  font-style: italic;
+  color: #eeff00;
+  padding: 5px 8px; /* Reduced padding */
+  background-color: #47494b; /* Lighter background color */
+  border-radius: 4px; /* Slightly smaller border radius */
+  border: 1px solid #ced4da; /* Matching border color with background */
+  margin-top: 10px;
+  display: inline-block; /* Ensures padding only covers the text */
+}
+
+
+/* Styling for result reasons */
+.result-reason {
+  font-size: 14px;
+  color: #495057;
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #e9ecef;
+  border-radius: 5px;
+  border: 1px solid #ced4da;
+}
+
+.result-reason strong {
+  font-weight: bold;
+  color: #212529;
+}
+
+
+.time-taken, .points-awarded {
+  margin-top: 10px;
+  font-size: 1.1em;
+}
+
+.points-awarded {
+  color: #28a745;
+}
+
+/* Summary Section */
+.result-summary {
+  margin-bottom: 20px;
+}
+
+.summary-title {
+  font-size: 1.4em;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.summary-item {
+  margin-bottom: 10px;
+  font-size: 1.1em;
+}
+
+.summary-divider {
+  border: none;
+  border-top: 2px solid #007BFF;
+  margin: 20px 0;
+}
+
+
+#progress {
+  margin: 20px 0;
+  height: 20px;
+  background-color: #ddd;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
+/* Feedback container styles */
+#feedback {
+  margin-top: 20px;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  transition: opacity 0.5s ease-in-out;
+}
+
+#feedback.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+#feedback {
+  padding: 10px;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 16px;
+  text-align: center;
+  background-color: #4caf50; /* Green for correct */
+}
+
+#feedback.correct {
+  background-color: #4caf50; /* Green for correct */
+}
+
+#feedback.incorrect {
+  background-color: #f44336; /* Red for wrong */
+}
+#feedback.missed {
+  background-color: #8836f4; /* Red for wrong */
+}
+
+#pauseOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensure it is on top of other content */
+}
+
+#pauseContent {
+  background: #fff; /* White background for the content */
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+#pauseOverlay.hidden {
+  display: none;
+}
+
+#quiz-container.blur {
+  filter: blur(5px);
+}
+/* Wrapper for buttons */
+.button-wrapper {
+  display: flex;
+  justify-content: center; /* Center align the buttons horizontally */
+  gap: 10px; /* Space between buttons */
+  margin: 20px 0; /* Space above and below the button group */
+}
+
+/* Wrapper for buttons */
+.button-wrapper {
+  display: flex;
+  justify-content: center; /* Center align the buttons horizontally */
+  gap: 10px; /* Space between buttons */
+  margin: 20px 0; /* Space above and below the button group */
+}
+
+.button {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  border: none;
+  background: none;
+  color: #0f1923;
+  cursor: pointer;
+  position: relative;
+  padding: 8px;
+  margin-bottom: 20px;
+  margin-top: 15px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 14px;
+  transition: all 0.15s ease;
+}
+
+.button::before,
+.button::after {
+  content: '';
+  display: block;
+  position: absolute;
+  right: 0;
+  left: 0;
+  height: calc(50% - 5px);
+  border: 1px solid #7D8082;
+  transition: all 0.15s ease;
+}
+
+.button::before {
+  top: 0;
+    border: 3px solid #e100ff;
+    border-bottom-width: 0px;
+}
+
+.button::after {
+  bottom: 0;
+  border: 3px solid #0021f8;
+  border-top-width: 0;
+}
+
+.button:active,
+.button:focus {
+  outline: none;
+}
+
+.button:active::before,
+.button:active::after {
+  right: 3px;
+  left: 3px;
+}
+
+.button:active::before {
+  top: 3px;
+}
+
+.button:active::after {
+  bottom: 3px;
+}
+
+.button_lg {
+  position: relative;
+  display: block;
+  padding: 10px 20px;
+  color: #fff;
+  overflow: hidden;
+  box-shadow: inset 0px 0px 0px 1px transparent;
+}
+
+.button_lg::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2px;
+  height: 2px;
+  background-color: inherit;
+}
+
+.button_lg::after {
+  content: '';
+  display: block;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 4px;
+  height: 4px;
+  background-color: inherit;
+  transition: all 0.2s ease;
+}
+
+.button_sl {
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: -1px;
+  left: -8px;
+  width: 0;
+  background-color: #b51bf1;
+  transform: skew(-15deg);
+  transition: all 0.2s ease;
+}
+
+.button_text {
+  position: relative;
+}
+
+/* Different button colors */
+.submit-button .button_lg {
+  background-color: #28a745; /* Green */
+}
+
+.submit-button:hover .button_lg {
+  background-color: #218838; /* Darker Green */
+}
+
+.pause-button .button_lg {
+  background-color: #e9b20e; /* Yellow */
+}
+
+.pause-button:hover .button_lg {
+  background-color: #e0a800; /* Darker Yellow */
+}
+
+.reset-button .button_lg {
+  background-color: #ff0019; /* Red */
+}
+
+.reset-button:hover .button_lg {
+  background-color: #c82333; /* Darker Red */
+}
+
+.proceed-button .button_lg {
+  background-color: #305ec0; /* Orange */
+}
+
+.proceed-button:hover .button_lg {
+  background-color: #7f3ada; /* Darker Orange */
+}
+.save-name-button .button_lg {
+  background-color: #305ec0; /* Orange */
+}
+
+.save-name-button:hover .button_lg {
+  background-color: #7f3ada; /* Darker Orange */
+  
+}
+.start-button .button_lg {
+  background-color: #fd7e14; /* Orange */
+}
+
+.start-button:hover .button_lg {
+  background-color: #e56709; /* Darker Orange */
+  
+}
+.resume-button .button_lg {
+  background-color: #2d78ce; /* Orange */
+}
+
+.resume-button:hover .button_lg {
+  background-color: #e509a7; 
+  
+}
+.show-purpose-button .button_lg {
+  background-color: #305ec0; 
+}
+
+.show-purpose-button:hover .button_lg {
+  background-color: #e509a7; 
+  
+}
+.show-about-me-button .button_lg {
+  background-color: #305ec0; /* Orange */
+}
+
+.show-about-me-button:hover .button_lg {
+  background-color: #e509a7;
+  
+}
+
+.button:hover .button_sl {
+  width: 150%;
+}
+/* dropdown select styles */
+/* Start Container Styling */
+#start-container {
+  background-color: #bc32d738;
+  color: #000;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  max-width: 420px;
+  margin: 20px auto;
+  text-align: center;
+}
+
+#start-container h1 {
+  font-size: 24px; /* Font size for the heading */
+  margin-bottom: 15px; /* Space below the heading */
+}
+
+#start-container label {
+  font-size: 16px; /* Font size for the label */
+  display: block; /* Make label a block element */
+  margin-bottom: 10px; /* Space below the label */
+}
+
+/* Dropdown Menu Styling */
+.custom-select {
+  background-color: #444; /* Dark background for dropdown */
+  color: #fff; /* Light text color */
+  border: 1px solid #555; /* Border color */
+  border-radius: 5px; /* Rounded corners */
+  padding: 10px; /* Padding inside dropdown */
+  font-size: 16px; /* Font size for the dropdown */
+  cursor: pointer; /* Pointer cursor on hover */
+  appearance: none; /* Remove default styling */
+  width: 100%; /* Full width */
+  max-width: 300px; /* Max width for dropdown */
+  margin: 0 auto; /* Center dropdown */
+  transition: background-color 0.3s, border-color 0.3s; /* Smooth transition */
+}
+
+.custom-select:focus {
+  outline: none; /* Remove default focus outline */
+  border-color: #007bff; /* Change border color on focus */
+}
+
+.custom-select option {
+  background-color: #444; /* Dark background for options */
+  color: #fff; /* Light text color */
+}
+
+/* Hover and focus states for dropdown */
+.custom-select:hover,
+.custom-select:focus {
+  background-color: #555; /* Darker background on hover/focus */
+}
+
+.custom-select::after {
+  content: '▼'; /* Down arrow */
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none; /* Prevent pointer events on the arrow */
+  color: #e70c0cf5; /* Arrow color */
+}
+/* ____________________________________________________________ */
+.instructions-container {
+  background: linear-gradient(135deg, #f9f9f9, #e0e0e0);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  margin-bottom: 20px;
+  border: 2px solid #dcdcdc;
+  position: relative;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.instructions-title {
+  font-size: 28px;
+  color: #3b3b3b;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  margin-bottom: 15px;
+  text-align: center;
+  background: #f4f4f4;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.toggle-section {
+  font-size: 22px;
+  color: #333;
+  background: #f0f0f0;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  border-left: 5px solid #6a1b9a;
+  cursor: pointer;
+}
+
+.section-content {
+  display: none; /* Hide all sections by default */
+  padding: 10px;
+  border-radius: 8px;
+  background: #fafafa;
+  margin-bottom: 15px;
+}
+
+.section-content ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.section-content ul li {
+  font-size: 18px;
+  color: #444;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  background: #fefefe;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  position: relative;
+}
+
+.points-amount {
+  font-weight: bold;
+  color: #6a1b9a;
+}
+
+.section-content p {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 15px;
+}
+/* Hide the quiz container initially */
+#quiz-container.hidden {
+  display: none;
+}
+
+/* Style the start container */
+#start-container {
+  text-align: center;
+}
+/* _____________________________________________________ */
+#warning-message {
+  color: red;
+}
+#warning-message.hidden {
+  display: none;
+}
+code {
+font-size: 13px;
+  background-color: #e6e4e438; 
+}
+/* Style for code elements in questions */
+.question-code {
+  font-family: 'Fira Code', 'Source Code Pro', 'Consolas', 'Courier New', monospace;
+  background-color: #494848; /* Light grey background */
+  padding: 2px 4px; /* Padding around the code */
+  border-radius: 3px; /* Rounded corners */
+  color: #d63384; /* Highlight color for code */
+
+  line-height: 1.4; /* Adjust line height */
+  display: inline; /* Inline with text */
+}
+
+
+/* Style for disabled radio buttons */
+.disabled-radio {
+  cursor: not-allowed; /* Change cursor to indicate disabled state */
+  opacity: 0.6; /* Make the button appear faded */
+  background-color: #e0e0e0; /* Light gray background to show it's disabled */
+  border: 1px solid #ccc; /* Light border to match the disabled look */
+}
+
+/* Optional: Style for disabled labels */
+.disabled-label {
+  cursor: not-allowed; /* Change cursor to indicate disabled state */
+  color: #a0a0a0; /* Light gray text color to indicate disabled state */
+}
+
+/* Optional: Style for disabled radio buttons on hover */
+.disabled-radio:hover {
+  background-color: #e0e0e0; /* Keep background color consistent on hover */
+  border: 1px solid #ccc; /* Keep border color consistent on hover */
+}
+
+/* _______________________________________ */
+
+/* General Styles for Info Containers */
+.info-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 800px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  z-index: 1000;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  padding: 20px; /* Reduced padding for better fit */
+  box-sizing: border-box;
+  animation: slideIn 0.4s ease-out;
+  max-height: 80vh; /* Limit height to viewport height */
+  overflow-y: auto; /* Add scroll if content overflows */
+}
+
+@keyframes slideIn {
+  from {
+      opacity: 0;
+      transform: translate(-50%, -60%);
+  }
+  to {
+      opacity: 1;
+      transform: translate(-50%, -50%);
+  }
+}
+
+.info-container.hidden {
+  display: none;
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+.info-container.show {
+  display: block;
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Close Button */
+.close-button {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: #e74c3c;
+  border: none;
+  color: #ffffff;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 22px;
+  text-align: center;
+  line-height: 40px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.close-button:hover {
+  background: #c0392b;
+  transform: scale(1.1);
+}
+
+.close-button:focus {
+  outline: none;
+}
+
+/* Heading Styles */
+h2 {
+  margin: 0;
+  font-size: 24px; /* Reduced font size for better fit */
+  color: #333333;
+  border-bottom: 4px dashed  purple;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  font-weight: 700;
+  text-align: center;
+  
+}
+
+h2.about-me-title,h2.purpose-title {
+  color: #3498db;
+}
+
+
+
+/* About Me Container Styles */
+
+
+/* Purpose Description Styles */
+.purpose-description {
+    font-size: 18px; /* Slightly increased for better readability */
+    color: #333333; /* Darker color for better contrast */
+    margin-bottom: 20px;
+    text-align: justify;
+    line-height: 1.8; /* Increased line-height for better readability */
+    font-family: 'Open Sans', sans-serif; /* Stylish and readable font family */
+    padding: 10px; /* Added padding for better spacing */
+    background-color: #f7f9fc; /* Light background for contrast */
+    border-left: 4px solid #3498db; /* Decorative border for visual interest */
+    border-radius: 8px; /* Rounded corners for a softer look */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.purpose-description:hover {
+    background-color: #eaf0f9; /* Light hover effect */
+    color: #2c3e50; /* Darker text color on hover for better focus */
+}
+
+.detail-item {
+  margin-bottom: 15px;
+  padding: 10px;
+  border-left: 4px solid #3498db;
+  background-color: #f0f8ff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.detail-item:hover {
+  background-color: #e6f7ff;
+  border-color: #2980b9;
+}
+
+.detail-label {
+  font-weight: 700;
+  color: #555555;
+}
+
+.brief-description {
+  font-size: 14px; /* Reduced font size for better fit */
+  color: #444444;
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Purpose Container Styles */
+.purpose-description {
+  font-size: 16px; /* Reduced font size for better fit */
+  color: #444444;
+  margin-bottom: 20px;
+  text-align: justify;
+}
+
+.purpose-features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.feature-item {
+  margin-bottom: 15px; /* Adjusted margin for better fit */
+  font-size: 14px; /* Reduced font size for better fit */
+  color: #555555;
+  position: relative;
+  padding-left: 35px;
+  padding-top: 10px;
+  line-height: 1.6;
+  border-left: 3px solid #3498db;
+  background-color: #f0f8ff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.feature-item:hover {
+  background-color: #e6f7ff;
+  border-color: #2980b9;
+}
+
+.feature-item::before {
+  content: "\2022";
+  color: #3498db;
+  font-size: 18px; /* Adjusted bullet size for better fit */
+  position: absolute;
+  left: 10px;
+  top: 10px;
+}
+
+/* Responsive Design for Small Screens */
+@media (max-width: 600px) {
+  .info-container {
+      width: 95%;
+      padding: 15px;
+  }
+
+  .close-button {
+      width: 35px;
+      height: 35px;
+      font-size: 18px;
+      line-height: 35px;
+  }
+
+  h2 {
+      font-size: 20px; /* Adjusted for small screens */
+  }
+
+  .detail-item,
+  .feature-item {
+      font-size: 14px; /* Further reduced font size for small screens */
+  }
+
+  .brief-description,
+  .purpose-description {
+      font-size: 12px; /* Further reduced font size for small screens */
+  }
+}
+
+/* Source Code Container Styles */
+.source-link {
+  font-size: 16px;
+  color: #000000; /* Black color for the main text */
+  margin-top: 20px;
+}
+
+.source-label {
+  font-weight: 700; /* Bold for "Source Code:" */
+  color: #333333; /* Dark grey for contrast */
+}
+
+.github-link,
+.replit-link {
+  color: #007bff; /* Blue color for the links */
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+.github-link:hover,
+.replit-link:hover {
+  color: #0056b3; /* Darker blue on hover */
+  text-decoration: underline;
+}
+
+.github-link:focus,
+.replit-link:focus {
+  outline: none;
+}
+/* Contact Link Styles */
+.contact-link {
+  color: #007bff; /* Blue color for the links */
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+.contact-link:hover {
+  color: #0056b3; /* Darker blue on hover */
+  text-decoration: underline;
+}
+
+.contact-link:focus {
+  outline: none;
+}
+
+/* _________________________ */
+/* Profile container styles */
+#profile-container {
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  width: 300px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#profile-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+#profile-name-input {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  width: calc(100% - 22px); /* Adjust width to fit padding */
+}
+
+
+#name-dropdown {
+  margin-top: 20px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  width: calc(100% - 22px); /* Adjust width to fit padding */
+}
+
+/* Styles for duplicate message */
+#duplicate-message {
+  color: #cc0000; /* Darker red for text */
+  font-size: 14px;
+  margin-top: 10px;
+  padding: 10px 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow for better visibility */
+  background-color: #f8d7da; /* Soft red background */
+  border-radius: 5px;
+  position: relative;
+  border: 1px solid #f5c6cb; /* Border to match background */
+}
+
+#duplicate-message-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+  background-color: #ff0000;
+  color: white;
+  border-radius: 5px;
+  padding: 0 5px;
+  font-weight: bold;
+}
+
+/* Hover effect for close button */
+#duplicate-message-close:hover {
+  background-color: #990000; /* Even darker red for hover effect */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Darker shadow on hover */
+}
+
+
+
+.hidden {
+  display: none;
+}
+
+.summary-item.new-record{
+  background-color: #d4edda; /* Light green background */
+  color: #155724; /* Dark green text */
+  border: 1px solid #c3e6cb; /* Light green border */
+  padding: 10px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+.remark-cell {
+  position: relative;
+  
+  cursor: pointer; /* Indicates that it’s interactive */
+}
+
+.remark-cell::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%; /* Position above the element */
+  left: 50%;
+  transform: translateX(-60%);
+  padding: 5px;
+  border-radius: 4px;
+  background-color: #333;
+  color: #fff;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 10;
+  font-size: 12px; /* Adjust size if necessary */
+}
+
+.remark-cell:hover::after,
+.remark-cell:focus::after {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Mobile-specific tooltip display */
+@media (max-width: 768px) {
+  .remark-cell {
+      touch-action: manipulation; /* Allow for touch interactions */
+      
+  }
+
+  .remark-cell:active::after {
+      opacity: 1;
+      visibility: visible;
+      ;
+      
+  }
+}
+
+/* Optional: Add some styles for different remark classes */
+.remark-excellent::after {
+  background-color: #4ec051; /* Green */
+}
+
+.remark-great-job::after {
+  background-color: #2ca1d7; /* Light Green */
+  transform: translateX(-90%);
+}
+
+.remark-good::after {
+  background-color: #e5ec1a; /* Amber */
+  transform: translateX(-90%);
+  color:black;
+}
+
+.remark-average::after {
+  background-color: Orange; /* Orange */
+  transform: translateX(-90%)
+}
+
+.remark-needs-improvement::after {
+  background-color: #e53528; /* Red */
+  transform: translateX(-90%)
+}
+
+.no-records-message {
+  text-align: center;
+  padding: 20px;
+  font-size: 16px;
+  color: #333;
+}
+#closePreviousRecordsModalBtn , #closeResultsModalBtn {
+  background-color: #007bff; /* Blue background */
+  border: none; /* Remove default border */
+  color: white; /* White text */
+  padding: 10px 20px; /* Space inside the button */
+  text-align: center; /* Center the text */
+  text-decoration: none; /* Remove underline from text */
+  display: inline-block; /* Inline block layout */
+  font-size: 16px; /* Font size */
+  margin: 10px 2px; /* Margin around the button */
+  cursor: pointer; /* Change cursor to pointer on hover */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for 3D effect */
+  transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+#closePreviousRecordsModalBtn , #closeResultsModalBtn:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+  transform: translateY(-2px); /* Slight lift on hover */
+}
+
+#closePreviousRecordsModalBtn , #closeResultsModalBtn:active {
+  background-color: #004080; /* Even darker blue when clicked */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Reduced shadow when clicked */
+  transform: translateY(0); /* Reset lift effect when clicked */
+}
+.btn-shine {
+  padding: 12px 48px;
+  color: #fff; /* White text */
+  background: linear-gradient(to right, #ff8c00, #ff4500); /* Bright gradient for contrast */
+  background-clip: text; /* Standard property */
+  -webkit-background-clip: text; /* Webkit vendor prefix */
+  -webkit-text-fill-color: transparent;
+  border: 2px solid #fff; /* White border to stand out */
+  border-radius: 5px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+  animation: shine 3s infinite linear;
+  animation-fill-mode: forwards;
+  -webkit-text-size-adjust: none;
+  font-weight: 600;
+  font-size: 16px;
+  text-decoration: none;
+  white-space: nowrap;
+  font-family: "Poppins", sans-serif;
+  text-align: center; /* Center text within the button */
+  display: inline-block; /* Ensure button styles are applied */
+  touch-action: manipulation; /* Improve touch responsiveness */
+  transition: background-color 0.3s, transform 0.1s; /* Smooth transition for feedback */
+}
+
+.btn-shine:hover,
+.btn-shine:focus {
+ 
+  border-color: #e921ff; /* Ensure border color is consistent */
+}
+
+.btn-shine:active {
+
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Reduced shadow when active */
+  transform: scale(0.90); /* Slightly scale down to give a press effect */
+}
+
+@-moz-keyframes shine {
+  0% {
+    background-position: 0;
+  }
+  60% {
+    background-position: 180px;
+  }
+  100% {
+    background-position: 180px;
+  }
+}
+
+@-webkit-keyframes shine {
+  0% {
+    background-position: 0;
+  }
+  60% {
+    background-position: 180px;
+  }
+  100% {
+    background-position: 180px;
+  }
+}
+
+@-o-keyframes shine {
+  0% {
+    background-position: 0;
+  }
+  60% {
+    background-position: 180px;
+  }
+  100% {
+    background-position: 180px;
+  }
+}
+
+@keyframes shine {
+  0% {
+    background-position: 0;
+  }
+  60% {
+    background-position: 180px;
+  }
+  100% {
+    background-position: 180px;
+  }
+}
