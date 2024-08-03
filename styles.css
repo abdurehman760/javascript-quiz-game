@@ -397,7 +397,7 @@ input[type="radio"]:checked + .custom-radio {
 /* Previous Records Modal Styles */
 #previousRecordsModal .modal-content {
   max-width: 1300px;
-  min-width: 600px;
+  min-width: 300px;
   margin: 50px auto;
   min-height: 85%;
 }
@@ -410,6 +410,11 @@ input[type="radio"]:checked + .custom-radio {
   overflow-x: auto; /* Enable horizontal scrolling */
   box-shadow: 0px 0px 10px 3px #cd52c55e;
 }
+.filterSelectLabel{
+  margin-top: 10px;
+    padding: 5px 5px;
+    
+}
 
 /* Responsive Design Adjustments */
 @media (max-width: 1024px) { /* For tablets */
@@ -419,7 +424,7 @@ input[type="radio"]:checked + .custom-radio {
   }
 
   #recordsTable {
-    font-size: 14px; /* Smaller font size for better fit */
+    
     display: block; /* Ensure table can scroll horizontally */
   }
 
@@ -431,20 +436,58 @@ input[type="radio"]:checked + .custom-radio {
   .modal-content {
     width: 90%; /* Adjust width for tablets */
   }
+  
+ 
 }
 
 @media (max-width: 768px) { /* For smaller screens like mobile phones */
   .modal-body {
     padding: 5px; /* Further adjust padding for smaller screens */
   }
+  .remark-cell::after {
+    
+    font-size: 6px; /* Adjust size if necessary */
+    
+  }
 
+ #filterSelect {
+    width:50%;
+    font-size: 50%;
+  }
   #recordsTable {
-    font-size: 12px; /* Even smaller font size for mobile */
+    font-size: 5px; /* Even smaller font size for mobile */
+   
   }
 
   #recordsTable th, #recordsTable td {
     padding: 6px; /* Further reduce padding */
   }
+/* General text justification for paragraphs */
+.section-content p  {
+  text-align: justify;
+  font-size: 2px;
+  word-spacing: 0.1em; /* Adjust as needed to control spacing */
+}
+.section-content ul li {
+  text-align: justify;
+  word-spacing: 0.1em; /* Adjust as needed to control spacing */
+  font-size: 2px;
+}
+
+/* Ensure lists inside section-content are also justified */
+.section-content ul {
+  font-size: 2px;
+  padding-left: 1em; /* Maintain padding for bullets */
+}
+
+/* Optional: Adjust the font size or line height for better readability */
+.section-content p {
+  font-size: 1rem; /* Adjust font size as needed */
+  line-height: 1.5; /* Adjust line height for readability */
+}
+
+
+
 }
 
 #recordsTable th, #recordsTable td {
@@ -1472,7 +1515,7 @@ h2.about-me-title,h2.purpose-title {
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.3s ease;
   z-index: 10;
-  font-size: 12px; /* Adjust size if necessary */
+  font-size: 7px; /* Adjust size if necessary */
 }
 
 .remark-cell:hover::after,
@@ -1637,4 +1680,26 @@ h2.about-me-title,h2.purpose-title {
   100% {
     background-position: 180px;
   }
+}
+/* General text justification for paragraphs */
+.section-content p  {
+  text-align: justify;
+  word-spacing: 0.1em; /* Adjust as needed to control spacing */
+}
+.section-content ul li {
+  text-align: justify;
+  word-spacing: 0.1em; /* Adjust as needed to control spacing */
+  font-size: 15px;
+}
+
+/* Ensure lists inside section-content are also justified */
+.section-content ul {
+  
+  padding-left: 1em; /* Maintain padding for bullets */
+}
+
+/* Optional: Adjust the font size or line height for better readability */
+.section-content p {
+  font-size: 1rem; /* Adjust font size as needed */
+  line-height: 1.5; /* Adjust line height for readability */
 }
