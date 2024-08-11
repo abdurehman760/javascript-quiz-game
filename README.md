@@ -11,6 +11,9 @@ A web-based quiz application to test and enhance your knowledge through interact
 - **Responsive Design:** Optimized for various devices and screen sizes.
 - **Previous Records:** Access and filter previous quiz results.
 
+- ## Live Demo
+- **Link:** https://javascript-quiz-game-for-learners.netlify.app/.
+
 ## Getting Started
 
 ### Prerequisites
