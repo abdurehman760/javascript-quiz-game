@@ -25,7 +25,7 @@ A web-based quiz application to test and enhance your knowledge through interact
 
 ```bash
 # Clone the Repository
-git clone https://github.com/abdurehman760/javascrip-quiz-game.git
+git clone https://github.com/abdurehman760/javascript-quiz-game.git
 
 # Navigate into the directory
 cd your-repo-directory
