@@ -1,9 +1,9 @@
 # JavaScript Quiz Game 🎓
 
-A web-based quiz application to test and enhance your knowledge through interactive quizzes. Select between basic and advanced quizzes, receive real-time feedback, and view detailed results.
+A single-page web application built using only HTML, CSS, and JavaScript to test and enhance your knowledge through interactive quizzes. Select between basic and advanced quizzes, receive real-time feedback, and view detailed results.
 
 ## Features
-
+- **Single Page Application:** Built using only HTML, CSS, and JavaScript for a seamless user experience.
 - **Dynamic Quiz Selection:** Choose from basic or advanced quizzes.
 - **Interactive Interface:** Real-time feedback on multiple-choice questions.
 - **Timer Functionality:** Manage quiz time with options to pause and resume.
